@@ -95,6 +95,9 @@ jQuery.fn.selectToUISlider = function(settings){
 				//control original select menu
 				var currSelect = jQuery('#' + thisHandle.attr('id').split('handle_')[1]);
 				currSelect.find('option').eq(ui.value).attr('selected', 'selected');
+				//trigger change event for the effected select control
+                var changeEvent = jQuery.Event("change", { uiSliderEvent: e, uiSliderContext: ui });
+				currSelect.trigger(changeEvent);
 		},
 		values: (function(){
 			var values = [];
